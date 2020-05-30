@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'py2tableau.apps.py2tableau'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
