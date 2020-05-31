@@ -2,10 +2,11 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import *
 from .forms import *
-import requests
+import pandas as pd
+import pickle
 
 def home(request):
-    return HttpResponse("This is the home page")
+    return render(request, 'py2tableau/home.html')
 
 def update_user_db(request):
     form = UserForm(None)
@@ -24,5 +25,21 @@ def update_user_db(request):
 def check_user_db(request):
     return HttpResponse(User.objects.all())
 
-def tableau(request):
-    return None
+def datasets(request):
+    return render(request, 'py2tableau/datasets.html')
+
+def dashboards(request):
+    return render(request, 'py2tableau/dashboards.html')
+
+def infer(request):
+    form = ModelForm(None)
+    if request.method == "POST":
+        form = ModelForm(request.POST)
+        model_data = pd.from_dict(form.cleaned_data)
+        mdl = pickle.load(r'..\models\model.pkl')
+        pred = mdl.predict(model_data)
+        context = {
+            "form": form
+            }
+        print(pred)
+    return render(request, 'py2tableau/infer_model_data.html', context)
