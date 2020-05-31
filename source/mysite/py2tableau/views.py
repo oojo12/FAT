@@ -38,4 +38,8 @@ def infer(request):
         model_data = pd.from_dict(form.cleaned_data)
         mdl = pickle.load(r'..\models\model.pkl')
         pred = mdl.predict(model_data)
-    return HttpResponse(pred)
+        context = {
+            "form": form
+            }
+        print(pred)
+    return render(request, 'py2tableau/infer_model_data.html', context)
