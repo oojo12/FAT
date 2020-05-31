@@ -11,6 +11,8 @@ def update_user_db(request):
         form = UserForm(request.POST)
         if form.is_valid():
             User.objects.create(**form.cleaned_data)
+        else:
+            print(form.errors)
     context = {
         "form": form
         }
