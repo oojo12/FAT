@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import *
 from .forms import *
+import requests
+
 def home(request):
     return HttpResponse("This is the home page")
 
@@ -21,3 +23,6 @@ def update_user_db(request):
 
 def check_user_db(request):
     return HttpResponse(User.objects.all())
+
+def tableau(request):
+    return None
