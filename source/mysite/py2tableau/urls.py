@@ -7,4 +7,5 @@ urlpatterns = [
     path('check_user_db', views.check_user_db, name='check_user_db'),
     path('datasets', views.datasets, name='datasets'),
     path('dashboards', views.dashboards, name='dashboards'),
+    path('infer', views.infer, name='infer'),
 ]
