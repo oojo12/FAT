@@ -28,6 +28,7 @@ def check_user_db(request):
 def datasets(request):
     return render(request, 'py2tableau/datasets.html')
 
+### this can be copied and pasted for new dashboards. Any addition to this should be added to the urls.py file.
 def dashboards(request):
     return render(request, 'py2tableau/dashboards.html')
 
@@ -36,7 +37,7 @@ def infer(request):
     if request.method == "POST":
         form = ModelForm(request.POST)
         model_data = pd.from_dict(form.cleaned_data)
-        mdl = pickle.load(r'..\models\model.pkl')
+        mdl = pickle.load(r'..\models\model.sav')
         pred = mdl.predict(model_data)
         context = {
             "form": form
