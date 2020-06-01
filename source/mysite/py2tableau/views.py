@@ -32,6 +32,12 @@ def dashboards1(request):
 def dashboards(request):
     return render(request, 'py2tableau/dashboards.html')
 
+def dashboards2(request):
+    return render(request, 'py2tableau/dashboards2.html')
+
+def dashboards3(request):
+    return render(request, 'py2tableau/dashboards3.html')
+
 def infer(request):
     form = ModelForm(None)
     if request.method == "POST":
