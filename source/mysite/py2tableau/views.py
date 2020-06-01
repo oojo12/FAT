@@ -25,8 +25,8 @@ def update_user_db(request):
 def check_user_db(request):
     return HttpResponse(User.objects.all())
 
-def datasets(request):
-    return render(request, 'py2tableau/datasets.html')
+def dashboards1(request):
+    return render(request, 'py2tableau/dashboards1.html')
 
 ### this can be copied and pasted for new dashboards. Any addition to this should be added to the urls.py file.
 def dashboards(request):
