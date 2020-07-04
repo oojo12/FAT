@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins
+    ports:
+      - 8080:8080
+      - 50000:50000
+      - 8443:8443
+    volumes:
+      - ../jenkins/jenkins_data:/var/jenkins_home
+
+  application:
+    container_name: fate
+    build:
+      context: ../fate/
+    ports:
+        - 8000:8000
+    volumes:
+      - C:\Users\olufemi.adedayo.ojo\Documents\Play\j\fate\FAT:\app
